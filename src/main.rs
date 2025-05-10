@@ -3,6 +3,7 @@ use std::env;
 use dotenvy::dotenv;
 use tokio::net::TcpListener;
 
+mod db;
 mod router;
 
 use router::router;
@@ -25,7 +26,7 @@ async fn main() {
     // Start server
     println!("Server running on port: {}", listener.local_addr().unwrap());
 
-    axum::serve(listener, router())
+    axum::serve(listener, router().await)
         .await
         .expect("Failed to start Axum server")
 }

@@ -1,5 +1,9 @@
 use axum::{Router, routing::get};
 
-pub fn router() -> Router {
-    Router::new().route("/", get("Hello word"))
+use crate::db::db_pool;
+
+pub async fn router() -> Router {
+    Router::new()
+        .route("/", get("Hello word"))
+        .with_state(db_pool().await)
 }
