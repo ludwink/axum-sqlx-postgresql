@@ -9,7 +9,18 @@ axum = "0.8.4"
 tokio = { version = "1.45.0", features = ["full"] }
 
 # Database
-sqlx = { version = "0.8.5", features = ["runtime-tokio", "postgres"] }
+sqlx = { version = "0.8.5", features = ["runtime-tokio", "postgres", "time"] }
+
+# Types
+time = {version = "0.3.41", features = ["serde", "serde-human-readable"]}
+# - "time" serde feature is required to serialize and deserialize time types
+# - "serde-human-readable" show types in human-readable format e.g. "1936-03-28" instead of [1936, 88]
+#   implicitly enables flags "serde", "formatting", and "parsing"
+
+# Utilities
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+garde = { version = "0.22.0", features = ["derive", "email"] }
 
 # Others
 dotenvy = "0.15.7"

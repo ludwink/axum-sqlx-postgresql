@@ -3,6 +3,7 @@ use std::env;
 use dotenvy::dotenv;
 use tokio::net::TcpListener;
 
+mod authors;
 mod db;
 mod router;
 
